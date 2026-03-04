@@ -50,9 +50,7 @@ contoh : ln -s file1.txt link.txt
 <img src="Screenshot 2026-03-04 112430.png" width="50%">
 
 Perintah pwd (Print Working Directory) digunakan untuk menampilkan direktori kerja saat ini. Biasanya saat pertama login, sistem akan berada pada direktori HOME user.
-
-Perintah echo $HOME digunakan untuk menampilkan lokasi direktori HOME dari user yang sedang aktif. Variabel $HOME adalah environment variable yang menyimpan path direktori home pengguna.
-
+Perintah <img src="Screenshot 2026-03-04 192514-1.png" width="8%"> digunakan untuk menampilkan lokasi direktori HOME dari user yang sedang aktif. Variabel $HOME adalah environment variable yang menyimpan path direktori home pengguna.
 Tujuan praktikum ini adalah untuk mengetahui lokasi direktori kerja awal dan membandingkannya dengan direktori HOME.
 
 2. Melihat Direktori Aktual dan Parent Direktori 
@@ -71,9 +69,7 @@ Memahami navigasi direktori menggunakan simbol:
 <img src="Screenshot 2026-03-04 114238.png" width="50%">
 
 Perintah mkdir digunakan untuk membuat direktori baru. Dalam praktikum ini dibuat beberapa direktori sekaligus, termasuk subdirektori. 
-
 Perintah ls -l digunakan untuk menampilkan daftar direktori dan file dalam format detail.
-
 Tujuan praktikum ini adalah memahami pembuatan banyak direktori sekaligus dan struktur folder bertingkat.
 
 4. Menghapus Direktori Kosong
@@ -88,21 +84,99 @@ Setelah subdirektori dihapus:
 rmdir B/F B
 maka direktori B dapat dihapus.
 Praktikum ini menunjukkan bahwa:
-rmdir hanya bisa menghapus direktori kosong.
-Pengguna harus memiliki izin akses terhadap direktori tersebut.
+- rmdir hanya bisa menghapus direktori kosong.
+- Pengguna harus memiliki izin akses terhadap direktori tersebut.
 
 5. Navigasi Direktori
 
 <img src="Screenshot 2026-03-04 115005.png" width="50%">
 
 Perintah tersebut menghasilkan error karena path yang dituliskan salah. Struktur direktori Linux untuk home user adalah:
-
 /home/username/
-
 Sedangkan:
-
-/ < user > /C
-
+<img src="Screenshot 2026-03-04 192242.png" width="6%">
 tidak valid karena folder user tidak berada langsung di root (/), melainkan berada di dalam direktori /home.
-
 Praktikum ini bertujuan untuk memahami struktur path absolut di sistem Linux.
+
+### Percobaan 2 : Manipulasi File
+
+1. Perintah cp (Copy File / Direktori)
+<img src="Screenshot 2026-03-04 211647.png" width="50%">
+<img src="Screenshot 2026-03-04 211923.png" width="50%">
+
+Perintah cp digunakan untuk menyalin file atau direktori.
+Pada praktikum ini dilakukan beberapa percobaan:
+- Menyalin file contoh menjadi contoh1
+- Menyalin file ke dalam direktori A
+- Menyalin beberapa file sekaligus ke dalam subdirektori A/D
+Tujuan praktikum ini adalah memahami cara menyalin file ke lokasi lain dan memahami format perintah:
+cp sumber tujuan
+
+2. Perintah mv (Move / Rename)
+<img src="Screenshot 2026-03-04 212621-1.png" width="50%">
+
+Perintah mv digunakan untuk:
+- Memindahkan file
+- Mengganti nama file
+Dalam praktikum ini dilakukan:
+- Mengganti nama file contoh menjadi contoh2
+- Memindahkan beberapa file ke dalam direktori A/D
+- Memindahkan file ke direktori C
+Format umum perintah:
+mv sumber tujuan
+- Jika tujuan adalah nama baru → rename
+- Jika tujuan adalah folder → pindah file
+
+3. Perintah rm (Remove)
+<img src="Screenshot 2026-03-04 212750-1.png" width="50%">
+
+Perintah rm digunakan untuk menghapus file atau direktori.
+Pada praktikum ini dilakukan:
+- Menghapus file biasa
+- Menghapus file dengan konfirmasi menggunakan opsi -i
+- Menghapus direktori beserta seluruh isinya menggunakan opsi -rf
+Perintah:
+rm nama_file
+rm -r nama_folder
+rm -rf nama_folder
+
+### Percobaan 3 : Membuat Shortcut (File Link)
+
+1. Membuat File
+<img src="Screenshot 2026-03-04 214348-1.png" width="50%">
+
+Perintah echo digunakan untuk membuat file bernama halo.txt dan mengisi isinya dengan teks "Hallo apa khabar".
+ls -l digunakan untuk melihat detail file termasuk permission, ukuran, dan jumlah link.
+
+2. Membuat Hard Link
+<img src="Screenshot 2026-03-04 214427-1.png" width="50%">
+
+Perintah:
+ln halo.txt z
+membuat hard link bernama z yang terhubung langsung ke file halo.txt.
+Ciri hard link:
+- Tidak ada tanda panah (→)
+- Jumlah link bertambah (biasanya jadi 2)
+- Mengarah ke inode yang sama
+- Jika file asli dihapus, hard link tetap bisa dibuka
+Perintah cat z digunakan untuk melihat isi file melalui hard link tersebut.
+
+3. Membuat Hard Link di Dalam Folder
+<img src="Screenshot 2026-03-04 214526-1.png" width="50%">
+
+- mkdir mydir membuat folder baru
+- ln z mydir/halo.juga membuat hard link baru di dalam folder tersebut
+- cat digunakan untuk memastikan isi file tetap sama
+Artinya sekarang ada 3 hard link yang mengarah ke file yang sama.
+
+4. Membuat Soft Link (Symbolic Link)
+<img src="Screenshot 2026-03-04 214615-1.png" width="50%">
+
+Perintah:
+ln -s z bye.txt
+membuat symbolic link (soft link) bernama bye.txt.
+Ciri soft link:
+- Ada tanda panah → menunjuk ke file asli
+- Jika file asli dihapus → link rusak
+- Bisa lintas filesystem
+- Bisa untuk direktori
