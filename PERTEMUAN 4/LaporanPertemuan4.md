@@ -180,3 +180,102 @@ Ciri soft link:
 - Jika file asli dihapus → link rusak
 - Bisa lintas filesystem
 - Bisa untuk direktori
+
+### LATIHAN
+
+#### 1. 
+<img src="Screenshot 2026-03-10 222104.png" width="50%">
+
+Gambar diatas adalah hasil perintah nya
+
+Pada latihan ini dilakukan percobaan navigasi direktori menggunakan beberapa perintah dasar Linux.
+- cd digunakan untuk berpindah direktori.
+- pwd digunakan untuk menampilkan direktori kerja saat ini.
+- ls -al digunakan untuk menampilkan daftar file dan direktori secara detail.
+- cd . menunjukkan direktori saat ini.
+- cd .. digunakan untuk berpindah ke direktori induk.
+- ls -al | more digunakan untuk menampilkan isi direktori per halaman.
+- cat passwd digunakan untuk melihat isi file passwd pada direktori /etc.
+- cd - digunakan untuk kembali ke direktori sebelumnya.
+
+#### 2. 
+<img src="Screenshot 2026-03-10 222936.png" width="50%">
+<img src="Screenshot 2026-03-10 223052.png" width="50%">
+<img src="Screenshot 2026-03-10 223122.png" width="50%">
+<img src="Screenshot 2026-03-10 223332.png" width="50%">
+<img src="Screenshot 2026-03-10 223352.png" width="50%">
+
+Pada latihan ini dilakukan penelusuran beberapa direktori penting dalam sistem Linux.
+- /bin berisi program dasar sistem.
+- /usr/bin berisi program tambahan untuk pengguna.
+- /sbin berisi program administrasi sistem.
+- /tmp digunakan untuk menyimpan file sementara.
+- /boot berisi file yang digunakan untuk proses booting sistem operasi.
+
+#### 3. 
+<img src="Screenshot 2026-03-10 224511.png" width="50%">
+<img src="Screenshot 2026-03-10 224547.png" width="50%">
+
+Direktori /dev berisi file perangkat (device files) yang digunakan oleh sistem untuk berkomunikasi dengan perangkat keras.
+Perintah who am i digunakan untuk mengetahui terminal yang sedang digunakan oleh pengguna.
+Perintah ls -l /dev/tty* digunakan untuk melihat daftar terminal yang tersedia beserta pemiliknya.
+
+#### 4. 
+<img src="Screenshot 2026-03-10 225018.png" width="50%">
+<img src="Screenshot 2026-03-10 225036.png" width="50%">
+<img src="Screenshot 2026-03-10 225053.png" width="50%">
+<img src="Screenshot 2026-03-10 225111.png" width="50%">
+<img src="Screenshot 2026-03-10 225128.png" width="50%">
+
+Direktori /proc merupakan pseudo filesystem yang berisi informasi mengenai kernel dan proses yang sedang berjalan.
+Beberapa file penting yang ditampilkan yaitu:
+- interrupts → informasi interrupt perangkat keras
+- devices → daftar perangkat yang terdaftar
+- cpuinfo → informasi prosesor
+- meminfo → informasi penggunaan memori
+- uptime → lama waktu sistem berjalan sejak terakhir dinyalakan
+- Direktori /proc disebut pseudo filesystem karena file di dalamnya tidak benar-benar tersimpan di disk, tetapi dibuat secara dinamis oleh kernel.
+
+#### 5. 
+<img src="Screenshot 2026-03-10 225902.png" width="50%">
+
+Perintah cd ~username digunakan untuk langsung berpindah ke direktori home milik pengguna lain jika memiliki izin akses.
+
+#### 6. 
+cd ~ Perintah ini digunakan untuk kembali ke direktori home pengguna yang sedang aktif.
+
+#### 7. 
+mkdir work play, Perintah mkdir digunakan untuk membuat direktori baru bernama work dan play pada direktori home.
+
+#### 8. 
+rmdir work Perintah rmdir digunakan untuk menghapus direktori kosong bernama work.
+
+#### 9.
+cp /etc/passwd ~ Perintah ini menyalin file passwd dari direktori /etc ke direktori home pengguna.
+
+#### 10. 
+mv passwd play Perintah mv digunakan untuk memindahkan file passwd ke dalam direktori play.
+
+#### 11.
+<img src="Screenshot 2026-03-10 230743.png" width="50%">
+
+Perintah ln -s digunakan untuk membuat symbolic link bernama terminal yang menunjuk ke perangkat terminal /dev/tty.
+Jika mencoba membuat hard link ke perangkat tty biasanya akan gagal karena perangkat berada pada filesystem khusus.
+
+#### 12. 
+<img src="Screenshot 2026-03-10 230836.png" width="50%">
+
+Perintah ini membuat file hello.txt yang berisi teks hello world.
+
+#### 13. 
+<img src="Screenshot 2026-03-10 230846.png" width="50%">
+
+Jika file disalin ke perangkat terminal, isi file akan langsung ditampilkan pada layar terminal karena perangkat tersebut terhubung langsung dengan layar pengguna.
+
+#### 14. 
+<img src="Screenshot 2026-03-10 230940.png" width="50%">
+
+Perintah ini membuat symbolic link bernama work yang menunjuk ke direktori play.
+
+#### 15. 
+rm -rf work, Perintah rm -rf digunakan untuk menghapus direktori work beserta seluruh isinya secara rekursif tanpa konfirmasi.
